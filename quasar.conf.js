@@ -75,8 +75,9 @@ module.exports = configure(function (ctx) {
 
             // https://quasar.dev/quasar-cli/handling-webpack
             // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-            chainWebpack(/* chain */) {
-                //
+            chainWebpack (chain, { isServer, isClient }) {
+                chain.output.filename('js/[name].js').chunkFilename('js/[name].js');
+                chain.plugin('mini-css-extract').tap(args => [{ filename: 'css/[name].css' }, ...args]);
             },
         },
 
@@ -105,9 +106,9 @@ module.exports = configure(function (ctx) {
             plugins: []
         },
 
-        // animations: 'all', // --- includes all animations
+        animations: 'all', // --- includes all animations
         // https://quasar.dev/options/animations
-        animations: [],
+        // animations: [],
 
         // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
         ssr: {
