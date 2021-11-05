@@ -1,6 +1,6 @@
 {
     "name": "evino",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Extended View Interface of NOJ",
     "productName": "NOJ Evino",
     "author": "ZsgsDesign <zsgsdesign@gmail.com>",
@@ -22,7 +22,8 @@
     ],
     "scripts": {
         "lint": "eslint --ext .js,.ts,.vue ./",
-        "test": "echo \"No test specified\" && exit 0"
+        "test": "echo \"No test specified\" && exit 0",
+        "push": "quasar build && npm publish"
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
