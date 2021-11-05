@@ -76,8 +76,8 @@ module.exports = configure(function (ctx) {
             // https://quasar.dev/quasar-cli/handling-webpack
             // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
             chainWebpack (chain, { isServer, isClient }) {
-                chain.output.filename('js/[name].js').chunkFilename('js/[name].js');
-                chain.plugin('mini-css-extract').tap(args => [{ filename: 'css/[name].css' }, ...args]);
+                // chain.output.filename('js/[name].js').chunkFilename('js/[name].js');
+                // chain.plugin('mini-css-extract').tap(args => [{ filename: 'css/[name].css' }, ...args]);
             },
         },
 
@@ -145,8 +145,8 @@ module.exports = configure(function (ctx) {
             },
 
             manifest: {
-                name: 'NOJ',
-                short_name: 'NOJ',
+                name: 'NOJ Evino',
+                short_name: 'NOJ Evino',
                 description: 'Extended View Interface of NOJ',
                 display: 'standalone',
                 orientation: 'portrait',
