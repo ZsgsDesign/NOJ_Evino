@@ -16,14 +16,11 @@
                 <q-space />
 
                 <div class="q-gutter-sm row items-center no-wrap">
-                    <q-btn round dense flat color="white" icon="video_call" v-if="$q.screen.gt.sm">
-                        <q-tooltip>Create a video or post</q-tooltip>
+                    <q-btn round dense flat color="white" icon="mdi-console" v-if="$q.screen.gt.sm">
+                        <q-tooltip>Web IDE</q-tooltip>
                     </q-btn>
                     <q-btn round dense flat color="white" icon="apps" v-if="$q.screen.gt.sm">
                         <q-tooltip>Apps</q-tooltip>
-                    </q-btn>
-                    <q-btn round dense flat color="white" icon="message" v-if="$q.screen.gt.sm">
-                        <q-tooltip>Messages</q-tooltip>
                     </q-btn>
                     <q-btn round dense flat color="white" icon="notifications">
                         <q-badge color="red" text-color="white" floating>
@@ -33,7 +30,7 @@
                     </q-btn>
                     <q-btn round flat>
                         <q-avatar size="26px">
-                        <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+                        <img src="https://acm.njupt.edu.cn/static/img/avatar/noj.png">
                         </q-avatar>
                         <q-tooltip>Account</q-tooltip>
                     </q-btn>
@@ -44,7 +41,7 @@
         <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-2" :width="240">
             <q-scroll-area class="fit">
                 <q-list padding>
-                <q-item v-for="link in links1" :key="link.text" v-ripple clickable>
+                <q-item v-for="link in defaultLink" :key="link.text" v-ripple clickable>
                     <q-item-section avatar>
                     <q-icon color="grey" :name="link.icon" />
                     </q-item-section>
@@ -55,7 +52,7 @@
 
                 <q-separator class="q-my-md" />
 
-                <q-item v-for="link in links2" :key="link.text" v-ripple clickable>
+                <q-item v-for="link in customLink" :key="link.text" v-ripple clickable>
                     <q-item-section avatar>
                     <q-icon color="grey" :name="link.icon" />
                     </q-item-section>
@@ -67,10 +64,10 @@
                 <q-separator class="q-mt-md q-mb-xs" />
 
                 <q-item-label header class="text-weight-bold text-uppercase">
-                    More from Youtube
+                    Services and Tools
                 </q-item-label>
 
-                <q-item v-for="link in links3" :key="link.text" v-ripple clickable>
+                <q-item v-for="link in serviceLink" :key="link.text" v-ripple clickable>
                     <q-item-section avatar>
                     <q-icon color="grey" :name="link.icon" />
                     </q-item-section>
@@ -81,7 +78,7 @@
 
                 <q-separator class="q-my-md" />
 
-                <q-item v-for="link in links4" :key="link.text" v-ripple clickable>
+                <q-item v-for="link in systemLink" :key="link.text" v-ripple clickable>
                     <q-item-section avatar>
                     <q-icon color="grey" :name="link.icon" />
                     </q-item-section>
@@ -93,22 +90,11 @@
                 <q-separator class="q-mt-md q-mb-lg" />
 
                 <div class="q-px-md text-grey-9">
+                    <p class="text-caption"><span class="text-bold">NOJ</span> is an online judge developed by Fangtang Zhixing Network Technology together with the ICPC Team of NJUPT.</p>
                     <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
-                    <a
-                        v-for="button in buttons1"
-                        :key="button.text"
-                        class="YL__drawer-footer-link"
-                        href="javascript:void(0)"
-                    >
-                        {{ button.text }}
-                    </a>
-                    </div>
-                </div>
-                <div class="q-py-md q-px-md text-grey-9">
-                    <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
-                    <a v-for="button in buttons2" :key="button.text" class="YL__drawer-footer-link" href="javascript:void(0)" >
-                        {{ button.text }}
-                    </a>
+                        <a v-for="button in bottomLink" :key="button.text" class="evino__drawer-footer-link" target="__blank" :href="button.href" >
+                            <q-icon :name="button.icon" /> {{ button.text }}
+                        </a>
                     </div>
                 </div>
                 </q-list>
@@ -123,7 +109,6 @@
 
 <script>
     import { ref } from 'vue'
-    import { fabYoutube } from '@quasar/extras/fontawesome-v5'
     export default {
     name: 'MyLayout',
     setup () {
@@ -133,53 +118,59 @@
             leftDrawerOpen.value = !leftDrawerOpen.value
         }
         return {
-            fabYoutube,
             leftDrawerOpen,
             search,
             toggleLeftDrawer,
-            links1: [
+            defaultLink: [
                 { icon: 'home', text: 'Home' },
-                { icon: 'whatshot', text: 'Trending' },
-                { icon: 'subscriptions', text: 'Subscriptions' }
+                { icon: 'mdi-book-multiple', text: 'Problems' },
+                { icon: 'mdi-coffee', text: 'Dojo' },
+                { icon: 'mdi-buffer', text: 'Status' },
+                { icon: 'mdi-certificate', text: 'Rank' },
+                { icon: 'mdi-trophy-variant', text: 'Contests' },
+                { icon: 'mdi-account-multiple', text: 'Groups' }
             ],
-            links2: [
-                { icon: 'folder', text: 'Library' },
-                { icon: 'restore', text: 'History' },
-                { icon: 'watch_later', text: 'Watch later' },
-                { icon: 'thumb_up_alt', text: 'Liked videos' }
+            customLink: [
+                { icon: 'mdi-open-in-new', text: 'NOJ BABEL' }
             ],
-            links3: [
-                { icon: fabYoutube, text: 'YouTube Premium' },
-                { icon: 'local_movies', text: 'Movies & Shows' },
-                { icon: 'videogame_asset', text: 'Gaming' },
-                { icon: 'live_tv', text: 'Live' }
+            serviceLink: [
+                { icon: 'mdi-content-paste', text: 'Paste Bin' },
+                { icon: 'mdi-image-multiple-outline', text: 'Image Hosting' },
+                { icon: 'mdi-console', text: 'Web IDE' }
             ],
-            links4: [
+            systemLink: [
                 { icon: 'settings', text: 'Settings' },
-                { icon: 'flag', text: 'Report history' },
-                { icon: 'help', text: 'Help' },
-                { icon: 'feedback', text: 'Send feedback' }
+                { icon: 'mdi-information', text: 'System Info' },
+                { icon: 'mdi-github', text: 'Open Source' },
+                { icon: 'mdi-message-alert', text: 'Send Feedback' }
             ],
-            buttons1: [
-                { text: 'About' },
-                { text: 'Press' },
-                { text: 'Copyright' },
-                { text: 'Contact us' },
-                { text: 'Creators' },
-                { text: 'Advertise' },
-                { text: 'Developers' }
+            bottomLink: [
+                {
+                    icon: 'mdi-open-in-new',
+                    text: 'Open Source',
+                    href: 'https://github.com/ZsgsDesign/NOJ'
+                },
+                {
+                    icon: 'mdi-open-in-new',
+                    text: "What's New",
+                    href: 'https://github.com/ZsgsDesign/NOJ/releases/tag/0.17.4'
+                },
             ],
-            buttons2: [
-                { text: 'Terms' },
-                { text: 'Privacy' },
-                { text: 'Policy & Safety' },
-                { text: 'Test new features' }
-            ]
         }
     }
     }
 </script>
 
 <style lang="scss">
-
+.evino {
+  &__drawer-footer-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .75rem;
+    &:hover {
+      color: #000;
+    }
+  }
+}
 </style>
