@@ -1,117 +1,185 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+    <q-layout view="hHh lpR fFf" class="bg-grey-1">
+        <q-header elevated class="bg-blue-9 text-white q-py-xs" height-hint="58">
+            <q-toolbar>
+                <q-btn flat dense round @click="toggleLeftDrawer" aria-label="Menu" icon="menu" />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+                <q-btn flat no-caps no-wrap class="q-ml-xs" v-if="$q.screen.gt.xs">
+                    <q-img src="icons/icon-white.png" no-spinner no-native-menu width="30px" height="30px" />
+                    <q-toolbar-title shrink class="text-weight-bold">
+                        NJUPT Online Judge
+                    </q-toolbar-title>
+                </q-btn>
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+                <q-space />
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+                <q-space />
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+                <div class="q-gutter-sm row items-center no-wrap">
+                    <q-btn round dense flat color="white" icon="video_call" v-if="$q.screen.gt.sm">
+                        <q-tooltip>Create a video or post</q-tooltip>
+                    </q-btn>
+                    <q-btn round dense flat color="white" icon="apps" v-if="$q.screen.gt.sm">
+                        <q-tooltip>Apps</q-tooltip>
+                    </q-btn>
+                    <q-btn round dense flat color="white" icon="message" v-if="$q.screen.gt.sm">
+                        <q-tooltip>Messages</q-tooltip>
+                    </q-btn>
+                    <q-btn round dense flat color="white" icon="notifications">
+                        <q-badge color="red" text-color="white" floating>
+                        2
+                        </q-badge>
+                        <q-tooltip>Notifications</q-tooltip>
+                    </q-btn>
+                    <q-btn round flat>
+                        <q-avatar size="26px">
+                        <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+                        </q-avatar>
+                        <q-tooltip>Account</q-tooltip>
+                    </q-btn>
+                </div>
+            </q-toolbar>
+        </q-header>
 
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+        <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-2" :width="240">
+            <q-scroll-area class="fit">
+                <q-list padding>
+                <q-item v-for="link in links1" :key="link.text" v-ripple clickable>
+                    <q-item-section avatar>
+                    <q-icon color="grey" :name="link.icon" />
+                    </q-item-section>
+                    <q-item-section>
+                    <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                </q-item>
+
+                <q-separator class="q-my-md" />
+
+                <q-item v-for="link in links2" :key="link.text" v-ripple clickable>
+                    <q-item-section avatar>
+                    <q-icon color="grey" :name="link.icon" />
+                    </q-item-section>
+                    <q-item-section>
+                    <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                </q-item>
+
+                <q-separator class="q-mt-md q-mb-xs" />
+
+                <q-item-label header class="text-weight-bold text-uppercase">
+                    More from Youtube
+                </q-item-label>
+
+                <q-item v-for="link in links3" :key="link.text" v-ripple clickable>
+                    <q-item-section avatar>
+                    <q-icon color="grey" :name="link.icon" />
+                    </q-item-section>
+                    <q-item-section>
+                    <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                </q-item>
+
+                <q-separator class="q-my-md" />
+
+                <q-item v-for="link in links4" :key="link.text" v-ripple clickable>
+                    <q-item-section avatar>
+                    <q-icon color="grey" :name="link.icon" />
+                    </q-item-section>
+                    <q-item-section>
+                    <q-item-label>{{ link.text }}</q-item-label>
+                    </q-item-section>
+                </q-item>
+
+                <q-separator class="q-mt-md q-mb-lg" />
+
+                <div class="q-px-md text-grey-9">
+                    <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
+                    <a
+                        v-for="button in buttons1"
+                        :key="button.text"
+                        class="YL__drawer-footer-link"
+                        href="javascript:void(0)"
+                    >
+                        {{ button.text }}
+                    </a>
+                    </div>
+                </div>
+                <div class="q-py-md q-px-md text-grey-9">
+                    <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
+                    <a v-for="button in buttons2" :key="button.text" class="YL__drawer-footer-link" href="javascript:void(0)" >
+                        {{ button.text }}
+                    </a>
+                    </div>
+                </div>
+                </q-list>
+            </q-scroll-area>
+        </q-drawer>
+
+        <q-page-container>
+            <router-view />
+        </q-page-container>
+    </q-layout>
 </template>
 
-<script lang="ts">
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
-
-import { defineComponent, ref } from 'vue'
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+<script>
+    import { ref } from 'vue'
+    import { fabYoutube } from '@quasar/extras/fontawesome-v5'
+    export default {
+    name: 'MyLayout',
+    setup () {
+        const leftDrawerOpen = ref(false)
+        const search = ref('')
+        function toggleLeftDrawer () {
+            leftDrawerOpen.value = !leftDrawerOpen.value
+        }
+        return {
+            fabYoutube,
+            leftDrawerOpen,
+            search,
+            toggleLeftDrawer,
+            links1: [
+                { icon: 'home', text: 'Home' },
+                { icon: 'whatshot', text: 'Trending' },
+                { icon: 'subscriptions', text: 'Subscriptions' }
+            ],
+            links2: [
+                { icon: 'folder', text: 'Library' },
+                { icon: 'restore', text: 'History' },
+                { icon: 'watch_later', text: 'Watch later' },
+                { icon: 'thumb_up_alt', text: 'Liked videos' }
+            ],
+            links3: [
+                { icon: fabYoutube, text: 'YouTube Premium' },
+                { icon: 'local_movies', text: 'Movies & Shows' },
+                { icon: 'videogame_asset', text: 'Gaming' },
+                { icon: 'live_tv', text: 'Live' }
+            ],
+            links4: [
+                { icon: 'settings', text: 'Settings' },
+                { icon: 'flag', text: 'Report history' },
+                { icon: 'help', text: 'Help' },
+                { icon: 'feedback', text: 'Send feedback' }
+            ],
+            buttons1: [
+                { text: 'About' },
+                { text: 'Press' },
+                { text: 'Copyright' },
+                { text: 'Contact us' },
+                { text: 'Creators' },
+                { text: 'Advertise' },
+                { text: 'Developers' }
+            ],
+            buttons2: [
+                { text: 'Terms' },
+                { text: 'Privacy' },
+                { text: 'Policy & Safety' },
+                { text: 'Test new features' }
+            ]
+        }
     }
-  }
-})
+    }
 </script>
+
+<style lang="scss">
+
+</style>
