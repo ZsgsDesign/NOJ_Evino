@@ -50,14 +50,14 @@
                     </q-item-section>
                 </q-item>
 
-                <q-separator class="q-my-md" />
+                <q-separator v-if="customLink.length" class="q-my-md" />
 
-                <q-item v-for="link in customLink" :key="link.text" v-ripple clickable>
+                <q-item v-for="link in customLink" :key="link['text']" v-ripple clickable>
                     <q-item-section avatar>
-                    <q-icon color="grey" :name="link.icon" />
+                    <q-icon color="grey" :name="link['icon']" />
                     </q-item-section>
                     <q-item-section>
-                    <q-item-label>{{ link.text }}</q-item-label>
+                    <q-item-label>{{ link['text'] }}</q-item-label>
                     </q-item-section>
                 </q-item>
 
@@ -90,6 +90,7 @@
                 <q-separator class="q-mt-md q-mb-lg" />
 
                 <div class="q-px-md text-grey-9">
+                    <p class="text-caption">&copy; 2018-2021, NOJ</p>
                     <p class="text-caption"><span class="text-bold">NOJ</span> is an online judge developed by Fangtang Zhixing Network Technology together with the ICPC Team of NJUPT.</p>
                     <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
                         <a v-for="button in bottomLink" :key="button.text" class="evino__drawer-footer-link" target="__blank" :href="button.href" >
@@ -131,7 +132,7 @@
                 { icon: 'mdi-account-multiple', text: 'Groups' }
             ],
             customLink: [
-                { icon: 'mdi-open-in-new', text: 'NOJ BABEL' }
+                // { icon: 'mdi-open-in-new', text: 'NOJ BABEL' }
             ],
             serviceLink: [
                 { icon: 'mdi-content-paste', text: 'Paste Bin' },
@@ -163,14 +164,17 @@
 
 <style lang="scss">
 .evino {
-  &__drawer-footer-link {
-    color: inherit;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: .75rem;
-    &:hover {
-      color: #000;
+    &__neon {
+        background: linear-gradient(to right, #4568dc, #b06ab3);
     }
-  }
+    &__drawer-footer-link {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: .75rem;
+        &:hover {
+        color: #000;
+        }
+    }
 }
 </style>
