@@ -1,6 +1,6 @@
 # NOJ EVINO
 
-Extended View Interface of NOJ
+Extended View Interface for NOJ
 
 ## Install the dependencies
 

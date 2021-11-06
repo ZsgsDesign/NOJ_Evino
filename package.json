@@ -1,7 +1,7 @@
 {
     "name": "evino",
     "version": "0.0.4",
-    "description": "Extended View Interface of NOJ",
+    "description": "Extended View Interface for NOJ",
     "productName": "NOJ Evino",
     "author": "ZsgsDesign <zsgsdesign@gmail.com>",
     "files": [

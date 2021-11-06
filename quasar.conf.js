@@ -147,7 +147,7 @@ module.exports = configure(function (ctx) {
             manifest: {
                 name: 'NOJ Evino',
                 short_name: 'NOJ Evino',
-                description: 'Extended View Interface of NOJ',
+                description: 'Extended View Interface for NOJ',
                 display: 'standalone',
                 orientation: 'portrait',
                 background_color: '#ffffff',
