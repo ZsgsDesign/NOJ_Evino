@@ -18,6 +18,8 @@ export default {
         openSource: '开放源代码',
         feedback: '提交反馈',
 
+        copyright: '{siteName}是一款由方糖智行网络科技与南京邮电大学ICPC校队共同研发的下一代在线测评系统。',
+
         whatsNew: '新增内容',
     },
     header: {
