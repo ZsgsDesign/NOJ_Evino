@@ -5,7 +5,7 @@
                 <q-btn flat dense round @click="toggleLeftDrawer" aria-label="Menu" icon="menu" />
 
                 <q-btn flat no-caps no-wrap class="q-ml-xs">
-                    <q-img src="icons/icon-white.png" no-spinner no-native-menu width="30px" height="30px" />
+                    <q-img src="/icons/icon-white.png" loading="eager" no-spinner no-native-menu no-transition width="30px" height="30px" />
                     <q-toolbar-title  v-if="$q.screen.gt.xs" shrink class="text-weight-bold">NJUPT Online Judge</q-toolbar-title>
                     <q-toolbar-title  v-if="$q.screen.lt.sm" shrink class="text-weight-bold">NOJ</q-toolbar-title>
                 </q-btn>
