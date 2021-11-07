@@ -90,13 +90,15 @@
                     <q-separator class="q-mt-md q-mb-lg" />
 
                     <div class="q-px-md text-grey-9 q-mb-lg">
-                        <q-select outlined v-model="locale" :options="localeOptions" label="Language" dense borderless emit-value map-options options-dense style="min-width: 150px" />
+                        <q-select outlined v-model="locale" @update:model-value="changeLocale" transition-show="flip-up" transition-hide="flip-down" :options="localeOptions" :label="$t('languages.label')" dense borderless emit-value map-options options-dense style="min-width: 150px" />
                     </div>
 
                     <div class="q-px-md text-grey-9">
-                        <p class="text-caption">&copy; 2018-2022, <span class="text-bold">{{ defaultNOJConfig.app.name }}</span> v{{ defaultNOJConfig.version.number }}</p>
                         <p class="text-caption">
-                            {{ defaultNOJConfig.app.name }} is an online judge developed by Fangtang Zhixing Network Technology together with the ICPC Team of NJUPT.
+                            &copy; 2018-2022, <span class="text-bold">{{ defaultNOJConfig.app.name }}</span> v{{ defaultNOJConfig.version.number }}
+                        </p>
+                        <p class="text-caption">
+                            {{ $t('navigation.sidebar.copyright', { siteName: defaultNOJConfig.app.name }) }}
                         </p>
                         <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
                             <a v-for="button in bottomLink" :key="button.text" class="evino__drawer-footer-link" target="__blank" :href="button.href"> <q-icon :name="button.icon" /> {{ $t(button.text) }} </a>
@@ -113,6 +115,10 @@
 </template>
 
 <script>
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -122,18 +128,24 @@ export default {
         const { locale } = useI18n({
             useScope: 'global',
         });
+
+        locale.value = localStorage.getItem('lang') || defaultNOJConfig.app.locale;
+
         const leftDrawerOpen = ref(false);
+
         function toggleLeftDrawer() {
             leftDrawerOpen.value = !leftDrawerOpen.value;
         }
+
+        function changeLocale(value) {
+            localStorage.setItem('lang', value);
+        }
+
         return {
             leftDrawerOpen,
             toggleLeftDrawer,
             locale,
-            localeOptions: [
-                { value: 'en-US', label: 'English' },
-                { value: 'zh-CN', label: '简体中文' },
-            ],
+            changeLocale,
             defaultLink: [
                 { icon: 'home', text: 'navigation.sidebar.home' },
                 { icon: 'mdi-book-multiple', text: 'navigation.sidebar.problems' },
@@ -168,6 +180,14 @@ export default {
                 },
             ],
         };
+    },
+    computed: {
+        localeOptions() {
+            return [
+                { value: 'en-US', label: this.$t('languages.enUS') },
+                { value: 'zh-CN', label: this.$t('languages.zhCN') },
+            ];
+        },
     },
 };
 </script>
