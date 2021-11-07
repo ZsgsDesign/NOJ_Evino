@@ -1,5 +1,7 @@
 {
   "singleQuote": true,
   "semi": true,
-  "jsxBracketSameLine": true
+  "jsxBracketSameLine": true,
+  "proseWrap": "preserve",
+  "printWidth": 320
 }
