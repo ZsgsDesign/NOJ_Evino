@@ -18,7 +18,10 @@ export default {
         openSource: 'Open Source',
         feedback: 'Send Feedback',
 
-        copyright: '{siteName} is an online judge developed by Fangtang Zhixing Network Technology together with the ICPC Team of NJUPT.',
+        copyright: {
+            noj: '{siteName} is an online judge developed by Fangtang Zhixing Network Technology together with the ICPC Team of NJUPT.',
+            evino: 'EVINO is the official extended view interface for NOJ developed by Youjie Zhang.'
+        },
 
         whatsNew: 'What\'s New',
     },

@@ -98,10 +98,20 @@
                             &copy; 2018-2022, <span class="text-bold">{{ defaultNOJConfig.app.name }}</span> v{{ defaultNOJConfig.version.number }}
                         </p>
                         <p class="text-caption">
-                            {{ $t('navigation.sidebar.copyright', { siteName: defaultNOJConfig.app.name }) }}
+                            {{ $t('navigation.sidebar.copyright.noj', { siteName: defaultNOJConfig.app.name }) }}
                         </p>
                         <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
-                            <a v-for="button in bottomLink" :key="button.text" class="evino__drawer-footer-link" target="__blank" :href="button.href"> <q-icon :name="button.icon" /> {{ $t(button.text) }} </a>
+                            <a v-for="button in NOJCopyrightLink" :key="button.text" class="evino__drawer-footer-link" target="__blank" :href="button.href"> <q-icon :name="button.icon" /> {{ $t(button.text) }} </a>
+                        </div>
+                        <q-separator class="q-mt-lg q-mb-lg" />
+                        <p class="text-caption">
+                            &copy; 2022, <span class="text-bold">EVINO</span> v0.0.4
+                        </p>
+                        <p class="text-caption">
+                            {{ $t('navigation.sidebar.copyright.evino') }}
+                        </p>
+                        <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
+                            <a v-for="button in EvinoCopyrightLink" :key="button.text" class="evino__drawer-footer-link" target="__blank" :href="button.href"> <q-icon :name="button.icon" /> {{ $t(button.text) }} </a>
                         </div>
                     </div>
                 </q-list>
@@ -167,7 +177,7 @@ export default {
                 { icon: 'mdi-github', text: 'navigation.sidebar.openSource' },
                 { icon: 'mdi-message-alert', text: 'navigation.sidebar.feedback' },
             ],
-            bottomLink: [
+            NOJCopyrightLink: [
                 {
                     icon: 'mdi-open-in-new',
                     text: 'navigation.sidebar.openSource',
@@ -177,6 +187,13 @@ export default {
                     icon: 'mdi-open-in-new',
                     text: 'navigation.sidebar.whatsNew',
                     href: 'https://github.com/ZsgsDesign/NOJ/releases/tag/1.0.0',
+                },
+            ],
+            EvinoCopyrightLink: [
+                {
+                    icon: 'mdi-open-in-new',
+                    text: 'navigation.sidebar.openSource',
+                    href: 'https://github.com/ZsgsDesign/NOJ_Evino',
                 },
             ],
         };
