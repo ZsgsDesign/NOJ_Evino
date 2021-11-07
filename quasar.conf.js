@@ -9,6 +9,7 @@
 /* eslint-env node */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { configure } = require('quasar/wrappers');
+const path = require('path');
 
 module.exports = configure(function (ctx) {
     return {
@@ -77,10 +78,29 @@ module.exports = configure(function (ctx) {
 
             // https://quasar.dev/quasar-cli/handling-webpack
             // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-            chainWebpack (chain, { isServer, isClient }) {
-                // chain.output.filename('js/[name].js').chunkFilename('js/[name].js');
-                // chain.plugin('mini-css-extract').tap(args => [{ filename: 'css/[name].css' }, ...args]);
-            },
+            // chainWebpack (chain, { isServer, isClient }) {
+            //     chain.output.filename('js/[name].js').chunkFilename('js/[name].js');
+            //     chain.plugin('mini-css-extract').tap(args => [{ filename: 'css/[name].css' }, ...args]);
+            // },
+            extendWebpack (cfg) {
+                // for i18n resources (json/json5/yaml)
+                cfg.module.rules.push({
+                    test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
+                    type: 'javascript/auto',
+                    // Use `Rule.include` to specify the files of locale messages to be pre-compiled
+                    include: [
+                        path.resolve(__dirname, './src/i18n'),
+                    ],
+                    loader: '@intlify/vue-i18n-loader'
+                })
+
+                // for i18n custom block
+                cfg.module.rules.push({
+                    resourceQuery: /blockType=i18n/,
+                    type: 'javascript/auto',
+                    loader: '@intlify/vue-i18n-loader'
+                })
+            }
         },
 
         // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
