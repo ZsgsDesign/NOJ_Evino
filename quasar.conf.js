@@ -31,6 +31,7 @@ module.exports = configure(function (ctx) {
         boot: [
             'i18n',
             'axios',
+            'defaultNOJConfig',
         ],
 
         // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -50,7 +51,7 @@ module.exports = configure(function (ctx) {
 
             'roboto-font', // optional, you are not bound to it
             'material-icons', // optional, you are not bound to it
-            'mdi-v5',
+            'mdi-v6',
         ],
 
         // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
