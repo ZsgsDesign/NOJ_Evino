@@ -4,9 +4,10 @@
             <q-toolbar>
                 <q-btn flat dense round @click="toggleLeftDrawer" aria-label="Menu" icon="menu" />
 
-                <q-btn flat no-caps no-wrap class="q-ml-xs" v-if="$q.screen.gt.xs">
+                <q-btn flat no-caps no-wrap class="q-ml-xs">
                     <q-img src="icons/icon-white.png" no-spinner no-native-menu width="30px" height="30px" />
-                    <q-toolbar-title shrink class="text-weight-bold">NJUPT Online Judge</q-toolbar-title>
+                    <q-toolbar-title  v-if="$q.screen.gt.xs" shrink class="text-weight-bold">NJUPT Online Judge</q-toolbar-title>
+                    <q-toolbar-title  v-if="$q.screen.lt.sm" shrink class="text-weight-bold">NOJ</q-toolbar-title>
                 </q-btn>
 
                 <q-space />
@@ -14,6 +15,9 @@
                 <q-space />
 
                 <div class="q-gutter-sm row items-center no-wrap">
+                    <q-btn round dense flat color="white" icon="mdi-magnify">
+                        <q-tooltip>Search</q-tooltip>
+                    </q-btn>
                     <q-btn round dense flat color="white" icon="mdi-console" v-if="$q.screen.gt.sm">
                         <q-tooltip>Web IDE</q-tooltip>
                     </q-btn>
@@ -33,6 +37,8 @@
                 </div>
             </q-toolbar>
         </q-header>
+
+        <q-ajax-bar ref="bar" position="top" color="accent" size="10px" skip-hijack />
 
         <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-2" :width="240">
             <q-scroll-area class="fit">
@@ -111,13 +117,11 @@
         name: 'MyLayout',
         setup () {
             const leftDrawerOpen = ref(false)
-            const search = ref('')
             function toggleLeftDrawer () {
                 leftDrawerOpen.value = !leftDrawerOpen.value
             }
             return {
                 leftDrawerOpen,
-                search,
                 toggleLeftDrawer,
                 defaultLink: [
                     { icon: 'home', text: 'Home' },
@@ -128,9 +132,7 @@
                     { icon: 'mdi-trophy-variant', text: 'Contests' },
                     { icon: 'mdi-account-multiple', text: 'Groups' }
                 ],
-                customLink: [
-                    // { icon: 'mdi-open-in-new', text: 'NOJ BABEL' }
-                ],
+                customLink: [],
                 serviceLink: [
                     { icon: 'mdi-content-paste', text: 'Paste Bin' },
                     { icon: 'mdi-image-multiple-outline', text: 'Image Hosting' },
@@ -151,7 +153,7 @@
                     {
                         icon: 'mdi-open-in-new',
                         text: "What's New",
-                        href: 'https://github.com/ZsgsDesign/NOJ/releases/tag/0.17.4'
+                        href: 'https://github.com/ZsgsDesign/NOJ/releases/tag/1.0.0'
                     },
                 ],
             }
@@ -170,7 +172,7 @@
             font-weight: 500;
             font-size: .75rem;
             &:hover {
-            color: #000;
+                color: #000;
             }
         }
     }
