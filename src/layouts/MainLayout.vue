@@ -6,9 +6,7 @@
 
                 <q-btn flat no-caps no-wrap class="q-ml-xs" v-if="$q.screen.gt.xs">
                     <q-img src="icons/icon-white.png" no-spinner no-native-menu width="30px" height="30px" />
-                    <q-toolbar-title shrink class="text-weight-bold">
-                        NJUPT Online Judge
-                    </q-toolbar-title>
+                    <q-toolbar-title shrink class="text-weight-bold">NJUPT Online Judge</q-toolbar-title>
                 </q-btn>
 
                 <q-space />
@@ -23,14 +21,12 @@
                         <q-tooltip>Apps</q-tooltip>
                     </q-btn>
                     <q-btn round dense flat color="white" icon="notifications">
-                        <q-badge color="red" text-color="white" floating>
-                        2
-                        </q-badge>
+                        <q-badge color="red" text-color="white" floating>2</q-badge>
                         <q-tooltip>Notifications</q-tooltip>
                     </q-btn>
                     <q-btn round flat>
                         <q-avatar size="26px">
-                        <img src="https://acm.njupt.edu.cn/static/img/avatar/noj.png">
+                            <img src="https://acm.njupt.edu.cn/static/img/avatar/noj.png">
                         </q-avatar>
                         <q-tooltip>Account</q-tooltip>
                     </q-btn>
@@ -43,10 +39,10 @@
                 <q-list padding>
                 <q-item v-for="link in defaultLink" :key="link.text" v-ripple clickable>
                     <q-item-section avatar>
-                    <q-icon color="grey" :name="link.icon" />
+                        <q-icon color="grey" :name="link.icon" />
                     </q-item-section>
                     <q-item-section>
-                    <q-item-label>{{ link.text }}</q-item-label>
+                        <q-item-label>{{ link.text }}</q-item-label>
                     </q-item-section>
                 </q-item>
 
@@ -64,7 +60,7 @@
                 <q-separator class="q-mt-md q-mb-xs" />
 
                 <q-item-label header class="text-weight-bold text-uppercase">
-                    Services and Tools
+                    Services and Apps
                 </q-item-label>
 
                 <q-item v-for="link in serviceLink" :key="link.text" v-ripple clickable>
