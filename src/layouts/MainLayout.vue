@@ -105,72 +105,73 @@
 </template>
 
 <script>
-    import { ref } from 'vue'
+    import { ref } from 'vue';
+
     export default {
-    name: 'MyLayout',
-    setup () {
-        const leftDrawerOpen = ref(false)
-        const search = ref('')
-        function toggleLeftDrawer () {
-            leftDrawerOpen.value = !leftDrawerOpen.value
+        name: 'MyLayout',
+        setup () {
+            const leftDrawerOpen = ref(false)
+            const search = ref('')
+            function toggleLeftDrawer () {
+                leftDrawerOpen.value = !leftDrawerOpen.value
+            }
+            return {
+                leftDrawerOpen,
+                search,
+                toggleLeftDrawer,
+                defaultLink: [
+                    { icon: 'home', text: 'Home' },
+                    { icon: 'mdi-book-multiple', text: 'Problems' },
+                    { icon: 'mdi-coffee', text: 'Dojo' },
+                    { icon: 'mdi-buffer', text: 'Status' },
+                    { icon: 'mdi-certificate', text: 'Rank' },
+                    { icon: 'mdi-trophy-variant', text: 'Contests' },
+                    { icon: 'mdi-account-multiple', text: 'Groups' }
+                ],
+                customLink: [
+                    // { icon: 'mdi-open-in-new', text: 'NOJ BABEL' }
+                ],
+                serviceLink: [
+                    { icon: 'mdi-content-paste', text: 'Paste Bin' },
+                    { icon: 'mdi-image-multiple-outline', text: 'Image Hosting' },
+                    { icon: 'mdi-console', text: 'Web IDE' }
+                ],
+                systemLink: [
+                    { icon: 'settings', text: 'Settings' },
+                    { icon: 'mdi-information', text: 'System Info' },
+                    { icon: 'mdi-github', text: 'Open Source' },
+                    { icon: 'mdi-message-alert', text: 'Send Feedback' }
+                ],
+                bottomLink: [
+                    {
+                        icon: 'mdi-open-in-new',
+                        text: 'Open Source',
+                        href: 'https://github.com/ZsgsDesign/NOJ'
+                    },
+                    {
+                        icon: 'mdi-open-in-new',
+                        text: "What's New",
+                        href: 'https://github.com/ZsgsDesign/NOJ/releases/tag/0.17.4'
+                    },
+                ],
+            }
         }
-        return {
-            leftDrawerOpen,
-            search,
-            toggleLeftDrawer,
-            defaultLink: [
-                { icon: 'home', text: 'Home' },
-                { icon: 'mdi-book-multiple', text: 'Problems' },
-                { icon: 'mdi-coffee', text: 'Dojo' },
-                { icon: 'mdi-buffer', text: 'Status' },
-                { icon: 'mdi-certificate', text: 'Rank' },
-                { icon: 'mdi-trophy-variant', text: 'Contests' },
-                { icon: 'mdi-account-multiple', text: 'Groups' }
-            ],
-            customLink: [
-                // { icon: 'mdi-open-in-new', text: 'NOJ BABEL' }
-            ],
-            serviceLink: [
-                { icon: 'mdi-content-paste', text: 'Paste Bin' },
-                { icon: 'mdi-image-multiple-outline', text: 'Image Hosting' },
-                { icon: 'mdi-console', text: 'Web IDE' }
-            ],
-            systemLink: [
-                { icon: 'settings', text: 'Settings' },
-                { icon: 'mdi-information', text: 'System Info' },
-                { icon: 'mdi-github', text: 'Open Source' },
-                { icon: 'mdi-message-alert', text: 'Send Feedback' }
-            ],
-            bottomLink: [
-                {
-                    icon: 'mdi-open-in-new',
-                    text: 'Open Source',
-                    href: 'https://github.com/ZsgsDesign/NOJ'
-                },
-                {
-                    icon: 'mdi-open-in-new',
-                    text: "What's New",
-                    href: 'https://github.com/ZsgsDesign/NOJ/releases/tag/0.17.4'
-                },
-            ],
-        }
-    }
     }
 </script>
 
 <style lang="scss">
-.evino {
-    &__neon {
-        background: linear-gradient(to right, #4568dc, #b06ab3);
-    }
-    &__drawer-footer-link {
-        color: inherit;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: .75rem;
-        &:hover {
-        color: #000;
+    .evino {
+        &__neon {
+            background: linear-gradient(to right, #4568dc, #b06ab3);
+        }
+        &__drawer-footer-link {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: .75rem;
+            &:hover {
+            color: #000;
+            }
         }
     }
-}
 </style>
