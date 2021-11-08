@@ -7,7 +7,7 @@
     "files": [
         "dist"
     ],
-    "license": "ISC",
+    "license": "MIT",
     "homepage": "https://github.com/ZsgsDesign/NOJ_Evino",
     "repository": {
         "type": "git",
