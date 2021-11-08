@@ -54,7 +54,7 @@
 
                     <q-separator v-if="customLink.length" class="q-my-md" />
 
-                    <q-item v-for="link in customLink" :key="link['text']" v-ripple clickable>
+                    <q-item tag="a" :href="link.url" :target="link.newtab ? '_blank' : ''" v-for="link in customLink" :key="link['text']" v-ripple clickable>
                         <q-item-section avatar>
                             <q-icon color="grey" :name="link['icon']" />
                         </q-item-section>
@@ -103,7 +103,7 @@
                         <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
                             <a v-for="button in NOJCopyrightLink" :key="button.text" class="evino__drawer-footer-link" target="__blank" :href="button.href"> <q-icon :name="button.icon" /> {{ $t(button.text) }} </a>
                         </div>
-                        <q-separator class="q-mt-lg q-mb-lg" />
+                        <q-separator class="q-mt-md q-mb-md" />
                         <p class="text-caption">
                             &copy; 2021-{{ defaultNOJConfig.version.year }}, <span class="text-bold">EVINO</span> v0.0.4
                         </p>
@@ -165,7 +165,7 @@ export default {
                 { icon: 'mdi-trophy-variant', text: 'navigation.sidebar.contests' },
                 { icon: 'mdi-account-multiple', text: 'navigation.sidebar.groups' },
             ],
-            customLink: [],
+            customLink: defaultNOJConfig.customURLs,
             serviceLink: [
                 { icon: 'mdi-content-paste', text: 'navigation.sidebar.pasteBin' },
                 { icon: 'mdi-image-multiple-outline', text: 'navigation.sidebar.imageHosting' },
