@@ -6,3 +6,8 @@ export interface Todo {
 export interface Meta {
   totalCount: number;
 }
+
+export interface Carousel {
+    order: number;
+    url: string;
+}

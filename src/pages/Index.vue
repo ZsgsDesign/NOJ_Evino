@@ -1,49 +1,34 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
-  </q-page>
+    <q-page class="container-lg row">
+        <carousel-component class="col-12" title="Home" active :carousels="carousels"></carousel-component>
+    </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/CompositionComponent.vue';
+import { Carousel } from 'components/models';
+import CarouselComponent from 'components/home/CarouselComponent.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  name: 'PageIndex',
-  components: { ExampleComponent },
-  setup() {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1'
-      },
-      {
-        id: 2,
-        content: 'ct2'
-      },
-      {
-        id: 3,
-        content: 'ct3'
-      },
-      {
-        id: 4,
-        content: 'ct4'
-      },
-      {
-        id: 5,
-        content: 'ct5'
-      }
-    ]);
-    const meta = ref<Meta>({
-      totalCount: 1200
-    });
-    return { todos, meta };
-  }
+    name: 'HomePage',
+    components: { CarouselComponent },
+    setup() {
+        const carousels = ref<Carousel[]>([
+            {
+                order: 1,
+                url: 'https://acm.njupt.edu.cn/static/img/carousel/aphyocharacinae_compilers.png',
+            },
+            {
+                order: 2,
+                url: 'https://acm.njupt.edu.cn/static/img/carousel/pick_your_style.png',
+            },
+            {
+                order: 3,
+                url: 'https://acm.njupt.edu.cn/static/img/carousel/babel.png',
+            },
+        ]);
+        console.log(carousels);
+        return { carousels };
+    },
 });
 </script>
