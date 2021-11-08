@@ -95,7 +95,7 @@
 
                     <div class="q-px-md text-grey-9">
                         <p class="text-caption">
-                            &copy; 2018-2022, <span class="text-bold">{{ defaultNOJConfig.app.name }}</span> v{{ defaultNOJConfig.version.number }}
+                            &copy; 2018-{{ defaultNOJConfig.version.year }}, <span class="text-bold">{{ defaultNOJConfig.app.name }}</span> v{{ defaultNOJConfig.version.number }}
                         </p>
                         <p class="text-caption">
                             {{ $t('navigation.sidebar.copyright.noj', { siteName: defaultNOJConfig.app.name }) }}
@@ -105,7 +105,7 @@
                         </div>
                         <q-separator class="q-mt-lg q-mb-lg" />
                         <p class="text-caption">
-                            &copy; 2022, <span class="text-bold">EVINO</span> v0.0.4
+                            &copy; 2021-{{ defaultNOJConfig.version.year }}, <span class="text-bold">EVINO</span> v0.0.4
                         </p>
                         <p class="text-caption">
                             {{ $t('navigation.sidebar.copyright.evino') }}

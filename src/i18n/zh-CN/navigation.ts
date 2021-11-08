@@ -20,7 +20,7 @@ export default {
 
         copyright: {
             noj: '{siteName}是一款由方糖智行网络科技与南京邮电大学ICPC校队共同研发的下一代在线测评系统。',
-            evino: 'EVINO是官方提供的NOJ拓展视图交互界面，由Youjie Zhang编写。'
+            evino: 'EVINO是官方提供的NOJ拓展视图交互界面，由 John Zhang 编写，基于 Typescript 与 SCSS 等语言。'
         },
 
         whatsNew: '新增内容',

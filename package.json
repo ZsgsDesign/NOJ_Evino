@@ -1,6 +1,6 @@
 {
     "name": "evino",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Extended View Interface for NOJ",
     "productName": "NOJ Evino",
     "author": "ZsgsDesign <zsgsdesign@gmail.com>",
@@ -29,8 +29,7 @@
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {
         "@babel/eslint-parser": "^7.13.14",
         "@quasar/app": "^3.0.0",
