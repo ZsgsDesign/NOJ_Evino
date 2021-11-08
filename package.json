@@ -18,7 +18,8 @@
     },
     "keywords": [
         "noj",
-        "evino"
+        "evino",
+        "extended_view_interface_for_noj"
     ],
     "scripts": {
         "lint": "eslint --ext .js,.ts,.vue ./",
