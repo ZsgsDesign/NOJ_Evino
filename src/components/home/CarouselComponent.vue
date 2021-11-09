@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md">
+    <div>
         <q-responsive :ratio="16 / 9" class="evino__carousel">
             <q-carousel autoplay thumbnails infinite arrows animated v-model="slide" height="400px">
                 <q-carousel-slide v-for="carousel in carousels" :key="carousel.order" :name="carousel.order" :img-src="carousel.url" />

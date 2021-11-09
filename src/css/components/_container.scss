@@ -1,48 +1,49 @@
-$xs-breakpoint: 718px;
+$xs-breakpoint: 600px;
 $sm-breakpoint: 1024px;
-$md-breakpoint: 1439px;
-$lg-breakpoint: 1920px;
+$md-breakpoint: 1440px;
 
-.container,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 @media (min-width: $xs-breakpoint) {
-  .container,
-  .container-sm {
-    max-width: 540px;
-  }
+    .container {
+        max-width: 564px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 726px;
+    }
 }
 
 @media (min-width: $sm-breakpoint) {
-  .container,
-  .container-sm,
-  .container-md {
-    max-width: 920px;
-  }
+    .container {
+        max-width: 976px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1146px;
+    }
 }
 
 @media (min-width: $md-breakpoint) {
-  .container,
-  .container-sm,
-  .container-md,
-  .container-lg {
-    max-width: 1140px;
-  }
+    .container {
+        max-width: 1380px;
+    }
 }
 
-@media (min-width: $lg-breakpoint) {
-  .container,
-  .container-sm,
-  .container-md,
-  .container-lg,
-  .container-xl {
-    max-width: 1440px;
-  }
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }

@@ -1,6 +1,9 @@
 <template>
-    <q-page class="container-lg row">
-        <carousel-component class="col-12" title="Home" active :carousels="carousels"></carousel-component>
+    <q-page class="container row">
+        <div class="col-12 col-md-8 q-pa-md">
+            <h4 class="q-mt-md">Welcome to {{defaultNOJConfig.app.name}}!</h4>
+            <carousel-component title="Home" active :carousels="carousels"></carousel-component>
+        </div>
     </q-page>
 </template>
 
@@ -16,18 +19,17 @@ export default defineComponent({
         const carousels = ref<Carousel[]>([
             {
                 order: 1,
-                url: 'https://acm.njupt.edu.cn/static/img/carousel/aphyocharacinae_compilers.png',
+                url: 'https://cdn.quasar.dev/img/mountains.jpg',
             },
             {
                 order: 2,
-                url: 'https://acm.njupt.edu.cn/static/img/carousel/pick_your_style.png',
+                url: 'https://cdn.quasar.dev/img/parallax1.jpg',
             },
             {
                 order: 3,
-                url: 'https://acm.njupt.edu.cn/static/img/carousel/babel.png',
+                url: 'https://cdn.quasar.dev/img/parallax2.jpg',
             },
         ]);
-        console.log(carousels);
         return { carousels };
     },
 });
